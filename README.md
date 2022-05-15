@@ -1,5 +1,8 @@
-# Task03
+# task03
 
+3-е домашнее задание для http://clojurecourse.by
+
+## Usage
 Разработать предметно-ориентированный язык программирования для удобной работы с датами и временем. Основа языка -- макрос with-datetime, который анализирует код внутри себя и выполняет необходимые замены. Внутри этого макроса должны работать операции сравнения двух дат как чисел, а также операции создания новой даты на основе указанной (например: ((java.util.Date.) + 1 day)).
 
 Формат синтаксиса сравнения дат: (> date1 date2), поддерживаемые операторы сравнения -- >, <, >=, <= .
@@ -12,15 +15,16 @@
 
 Пример использования языка:
 
-;; Заготовки дат
-;;
+Заготовки дат
+```
 (def cal (java.util.Calendar/getInstance))
 (def today (java.util.Date.))
 (def yesterday (do (.add cal java.util.Calendar/DATE -1) (.getTime cal)))
 (def tomorrow (do (.add cal java.util.Calendar/DATE 2) (.getTime cal)))
+```
 
-;; Использование нашего макроса
-;;
+Использование нашего макроса
+```
 (with-datetime
     (if (> today tomorrow) (println "Time goes wrong"))
     (if (<= yesterday today) (println "Correct"))
@@ -33,3 +37,4 @@
                (< d2 d3)
                (< d3 d4))
         (println "DSL works correctly"))))
+```
